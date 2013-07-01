@@ -1,0 +1,5 @@
+setl number                                                                                           
+ setl ru                                                                                               
+ setlocal expandtab                                                                                    
+ setlocal shiftwidth=3                                                                                 
+ setlocal softtabstop=3  
