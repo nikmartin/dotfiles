@@ -1,0 +1,9 @@
+[user]
+	name = Nik Martin
+	email = nik.martin@gmail.com
+[color]
+	ui = auto
+[init]
+	templatedir = ~/.git_template
+[push]
+	default = simple
