@@ -108,3 +108,9 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+#bash hostory search with pg-up and pg-down
+"\e[5~": history-search-backward
+"\e[6~": history-search-forward
+
+
