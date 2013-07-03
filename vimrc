@@ -10,7 +10,7 @@ else
     set background=dark
 endif
 
-let g:solarized_termtrans = 1
+let g:solarized_termtrans = 0
 
 let &colorcolumn=join(range(100,102),",")
 "set number
@@ -90,4 +90,7 @@ set dir^=~/.vim/tmp/swap//,.
 
 set undodir+=~/.vim/tmp/undo//
 set undofile
+
+
+map <Esc>[B <Down>
 
