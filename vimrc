@@ -75,21 +75,23 @@ endif
 "syntax checkers
 let g:syntastic_javascript_checkers = ['jshint']
 
-"store tmp/swp/undo files somewhere else
-set backupdir-=.
-set backupdir+=.
-set backupdir-=~/
-set backupdir^=~/.vim/tmp/backup//
-set backup
+"undo/swap/backup files:
 
-set dir-=.
-set dir-=~/,
-set dir-=~/tmp
-set dir-=/var/tmp,
-set dir^=~/.vim/tmp/swap//,.
-
-set undodir+=~/.vim/tmp/undo//
-set undofile
+let s:dir = has('win32') ? '~/Application Data/Vim' : has('mac') ? '~/Library/Vim' : '~/.local/share/vim'
+if isdirectory(expand(s:dir))
+  if &directory =~# '^\.,'
+    let &directory = expand(s:dir) . '/swap//,' . &directory
+  endif
+  if &backupdir =~# '^\.,'
+    let &backupdir = expand(s:dir) . '/backup//,' . &backupdir
+  endif
+  if exists('+undodir') && &undodir =~# '^\.\%(,\|$\)'
+    let &undodir = expand(s:dir) . '/undo//,' . &undodir
+  endif
+endif
+if exists('+undofile')
+  set undofile
+endif
 
 map <Esc>[B <Down>
 """"""""""""""
