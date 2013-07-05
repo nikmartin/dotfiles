@@ -109,8 +109,5 @@ if ! shopt -oq posix; then
   fi
 fi
 
-#bash hostory search with pg-up and pg-down
-"\e[5~": history-search-backward
-"\e[6~": history-search-forward
-
+alias tmux="TERM=screen-256color-bce tmux"
 

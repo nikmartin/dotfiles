@@ -91,6 +91,14 @@ set dir^=~/.vim/tmp/swap//,.
 set undodir+=~/.vim/tmp/undo//
 set undofile
 
-
 map <Esc>[B <Down>
-
+""""""""""""""
+" tmux fixes "
+""""""""""""""
+" Handle tmux $TERM quirks in vim
+if $TERM =~ '^screen-256color'
+    map <Esc>OH <Home>
+    map! <Esc>OH <Home>
+    map <Esc>OF <End>
+    map! <Esc>OF <End>
+endif
