@@ -2,7 +2,7 @@ execute pathogen#infect()
 syntax on
 filetype plugin indent on
 
-"solarized options
+"solarized colorscheme options
 colorscheme solarized
 if has('gui_running')
     set background=light
@@ -12,8 +12,10 @@ endif
 
 let g:solarized_termtrans = 0
 
+"display a different colored column at col 100
 let &colorcolumn=join(range(100,102),",")
-"set number
+
+"set line numbers - Toggle between normal and relative
 function! NumberToggle()
   if(&relativenumber == 1)
     set number
@@ -24,17 +26,13 @@ endfunc
 
 nnoremap <C-n> :call NumberToggle()<cr>
 
-
-"ctags in new tab
-:nnoremap <silent><Leader><C-]> <C-w><C-]><C-w>T
-
 set switchbuf=usetab,newtab
 nnoremap <F8> :sbnext<CR>
 nnoremap <S-F8> :sbprevious<CR>
 
 "status line
 set laststatus=2
-set statusline=%F%m%r%h%w\ (%{&ff}){%Y}[%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}\ %{fugitive#statusline()}
+set statusline=%F%m%r%h%w\ (%{&ff}){%Y}[%l,%v][%p%%]\ %{strftime(\"%m/%d/%y\ -\ %H:%M\")}\ %{fugitive#statusline()}
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -46,22 +44,24 @@ if (has("autocmd") && executable("gconftool-2"))
    au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Solarized/cursor_shape block"
 endif
 
-
-"some hashtrocket vimrc goodness
-
+"no beeps, just flash screen
 set visualbell
 
+" autocomplete/tab select commands
 set wildmenu
 set wildmode=list:longest,full
 
+"set default window splits to right, then below
 set splitright
 set splitbelow
 
+"hide buffers, don't abandon
 set hidden
 
 set guifont=Source\ Code\ Pro\ Medium\ 11
 " set guioptions-=T guioptions-=e guioptions-=L guioptions-=r
 set shell=bash
+
 
 augroup vimrc
   autocmd!
@@ -77,7 +77,7 @@ let g:syntastic_javascript_checkers = ['jshint']
 
 "undo/swap/backup files:
 
-let s:dir = has('win32') ? '~/Application Data/Vim' : has('mac') ? '~/Library/Vim' : '~/.local/share/vim'
+let s:dir = '~/.local/share/vim'
 if isdirectory(expand(s:dir))
   if &directory =~# '^\.,'
     let &directory = expand(s:dir) . '/swap//,' . &directory
@@ -89,6 +89,7 @@ if isdirectory(expand(s:dir))
     let &undodir = expand(s:dir) . '/undo//,' . &undodir
   endif
 endif
+
 if exists('+undofile')
   set undofile
 endif
