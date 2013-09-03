@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/home/nmartin/Projects/pcr-appserver'
-let g:netrw_dirhist_2='/home/nmartin/Projects/pcr-appserver/routes'
-let g:netrw_dirhist_3='/home/nmartin/dotfiles/git_template'
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/nmartin/Projects/pcr-appserver/public/js/routes'
+let g:netrw_dirhist_2='/home/nmartin/Projects/pcr-appserver/public/js'
+let g:netrw_dirhist_3='/home/nmartin/Projects/pcr-appserver/public'
+let g:netrw_dirhist_4='/home/nmartin/Projects/pcr-appserver/public/template'

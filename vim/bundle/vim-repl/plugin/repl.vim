@@ -177,6 +177,11 @@ let g:ReplTypes =
       \ 'init'    : "set prompt=\"\\ntcsh> \"\nunset rprompt",
       \ 'prompt'  : '\m\C^tcsh>',
       \ 'syntax'  : 'tcsh'}
+  \, 'Node':
+      \{'command' : 'node',
+      \ 'init'    : 'var repl = require("repl")\nrepl.start({prompt: "node> "});',
+      \ 'prompt'  : '\m\C^node>',
+      \ 'syntax'  : 'javascript'}
   \ }
   
 function! s:ReplInit()

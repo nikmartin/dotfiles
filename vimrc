@@ -24,31 +24,49 @@ function! NumberToggle()
   endif
 endfunc
 
+"make relative line numbers default
+set relativenumber
+
+"smart scroll
+set so=14
+
 nnoremap <C-n> :call NumberToggle()<cr>
 
 set switchbuf=usetab,newtab
 nnoremap <F8> :sbnext<CR>
 nnoremap <S-F8> :sbprevious<CR>
 
+"xterm style mouse mode (adjust splits, etc)
+set mouse=n
+set ttymouse=xterm2
+
+"switch out of insert mode when idle
+au CursorHoldI * stopinsert
+
 "status line
-set laststatus=2
-set statusline=%F%m%r%h%w\ (%{&ff}){%Y}[%l,%v][%p%%]\ %{strftime(\"%m/%d/%y\ -\ %H:%M\")}\ %{fugitive#statusline()}
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline=%F%m%r%h%w\ (%{&ff}){%Y}[%l,%v][%p%%]\ %{strftime(\"%m/%d/%y\ -\ %H:%M\")}\ %{fugitive#statusline()}
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+
+"enable airline tabs
+let g:airline#extensions#tabline#enabled = 1
 
 "cursor insert/normal mode changes
 if (has("autocmd") && executable("gconftool-2"))
-   au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Solarized/cursor_shape ibeam"
-   au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Solarized/cursor_shape block"
-   au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Solarized/cursor_shape block"
+  au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Solarized/cursor_shape ibeam"
+  au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Solarized/cursor_shape block"
+  au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Solarized/cursor_shape block"
 endif
 
 "no beeps, just flash screen
 set visualbell
 
-" autocomplete/tab select commands
-set wildmenu
+"highlight search 
+set hlsearch
+
+"autocomplete/tab select commands
+"wildmenu is set in vim-sensible
 set wildmode=list:longest,full
 
 "set default window splits to right, then below
@@ -105,3 +123,5 @@ if $TERM =~ '^screen-256color'
     map <Esc>OF <End>
     map! <Esc>OF <End>
 endif
+
+" vim:set ft=vim et sw=2:
