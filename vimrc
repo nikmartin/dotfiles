@@ -27,7 +27,7 @@ endfunc
 "make relative line numbers default
 set relativenumber
 
-"smart scroll
+"smart scroll: scrolls page when cursor is 14 lines from top or bottom
 set so=14
 
 nnoremap <C-n> :call NumberToggle()<cr>
@@ -40,23 +40,28 @@ nnoremap <S-F8> :sbprevious<CR>
 set mouse=n
 set ttymouse=xterm2
 
-"switch out of insert mode when idle
-au CursorHoldI * stopinsert
-
 "status line
-"set statusline=%F%m%r%h%w\ (%{&ff}){%Y}[%l,%v][%p%%]\ %{strftime(\"%m/%d/%y\ -\ %H:%M\")}\ %{fugitive#statusline()}
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
+set statusline=%F%m%r%h%w\ (%{&ff}){%Y}[%l,%v][%p%%]\ %{strftime(\"%m/%d/%y\ -\ %H:%M\")}\ %{fugitive#statusline()}
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
-"enable airline tabs
-let g:airline#extensions#tabline#enabled = 1
 
-"cursor insert/normal mode changes
+function! SetIbeamCursor()  
+  !gconftool-2 --type string --set /apps/gnome-terminal/profiles/Solarized/cursor_shape ibeam
+  !gconftool-2 --type string --set /apps/gnome-terminal/profiles/Profile0/cursor_shape ibeam
+endfunc
+
+function! SetBlockCursor()
+  !gconftool-2 --type string --set /apps/gnome-terminal/profiles/Solarized/cursor_shape block
+  !gconftool-2 --type string --set /apps/gnome-terminal/profiles/Profile0/cursor_shape block
+endfunc
+
+ "cursor insert/normal mode changes
 if (has("autocmd") && executable("gconftool-2"))
-  au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Solarized/cursor_shape ibeam"
-  au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Solarized/cursor_shape block"
-  au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Solarized/cursor_shape block"
+  au InsertEnter * silent :call SetIbeamCursor()
+  au InsertLeave * silent :call SetBlockCursor()
+  au VimLeave * silent :call SetBlockCursor()
 endif
 
 "no beeps, just flash screen
@@ -86,9 +91,6 @@ augroup vimrc
   autocmd GuiEnter * set columns=120 lines=60 number
 augroup END
 
-if filereadable(expand('~/.vimrc.local'))
-  source ~/.vimrc.local
-endif
 
 "syntax checkers
 let g:syntastic_javascript_checkers = ['jshint']
@@ -122,6 +124,10 @@ if $TERM =~ '^screen-256color'
     map! <Esc>OH <Home>
     map <Esc>OF <End>
     map! <Esc>OF <End>
+endif
+
+if filereadable(expand('~/.vimrc.local'))
+  source ~/.vimrc.local
 endif
 
 " vim:set ft=vim et sw=2:
