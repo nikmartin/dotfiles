@@ -111,3 +111,16 @@ fi
 
 alias tmux="TERM=screen-256color-bce tmux"
 
+
+# some flags for kernel compiling, and compiling in general
+export CONCURRENCY_LEVEL=6
+export CHOST="x86_64-pc-Linux-gnu"
+export KCFLAGS="-march=bdver2 -O2 -pipe" 
+export KCPPFLAGS="-march=bdver2 -O2 -pipe"
+export CFLAGS="-march=bdver2 -O2 -pipe"
+export CXXFLAGS="$CFLAGS"
+export APPEND_TO_VERSION=-`date +%Y%m%d%H%M`
+export USE_CCACHE=1
+
+#NVM
+[[ -s /home/nmartin/.nvm/nvm.sh ]] && . /home/nmartin/.nvm/nvm.sh 

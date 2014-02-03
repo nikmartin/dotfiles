@@ -20,3 +20,7 @@
 	 cmd = git rebase --abort
 [guitool "Pull with Rebase"]
 	 cmd = git pull --rebase
+[gui]
+	recentrepo = /home/nmartin/Projects/pcr-appserver
+	recentrepo = /home/nmartin/downloaded-projects/bootstrap
+	recentrepo = /home/nmartin/downloaded-projects/backbone

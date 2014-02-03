@@ -91,6 +91,8 @@ augroup vimrc
   autocmd GuiEnter * set columns=120 lines=60 number
 augroup END
 
+"buffer handling in splits
+nmap <C-W>! <Plug>Kwbd
 
 "syntax checkers
 let g:syntastic_javascript_checkers = ['jshint']
