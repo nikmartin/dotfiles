@@ -7,7 +7,7 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="bashrc inputrc vimrc tmux.conf gitconfig vim git_template xmodmap"
+files="bash_profile bashrc profile inputrc gitconfig git_template xinitrc bash_aliases"
 
 ##########
 
@@ -28,4 +28,3 @@ for file in $files; do
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/.$file
 done
-

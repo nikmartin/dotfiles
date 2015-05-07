@@ -8,7 +8,8 @@
 [push]
 	default = simple
 [core]
-	autocrlf = input
+	autocrlf = false
+	editor = atom --wait
 [guitool "Rebase onto..."]
 	cmd = git rebase
 	revprompt = yes
@@ -21,6 +22,3 @@
 [guitool "Pull with Rebase"]
 	 cmd = git pull --rebase
 [gui]
-	recentrepo = /home/nmartin/Projects/pcr-appserver
-	recentrepo = /home/nmartin/downloaded-projects/bootstrap
-	recentrepo = /home/nmartin/downloaded-projects/backbone
