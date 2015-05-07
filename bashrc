@@ -35,6 +35,8 @@ source '/home/nmartin/Apps/google-cloud-sdk/path.bash.inc'
 source '/home/nmartin/Apps/google-cloud-sdk/completion.bash.inc'
 
 
+source '~/.git-flow-completion.bash'
+
 # some flags for kernel compiling, and compiling in general
 export CONCURRENCY_LEVEL=6
 export CHOST="x86_64-pc-Linux-gnu"
