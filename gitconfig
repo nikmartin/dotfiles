@@ -8,8 +8,8 @@
 [push]
 	default = simple
 [core]
-	autocrlf = false
-	editor = atom --wait
+	autocrlf = input
+	editor = nano
 [guitool "Rebase onto..."]
 	cmd = git rebase
 	revprompt = yes
@@ -22,3 +22,18 @@
 [guitool "Pull with Rebase"]
 	 cmd = git pull --rebase
 [gui]
+[diff]
+	tool = meld
+[merge]
+	tool = meld
+[mergetool "meld"]
+ cmd = meld "$LOCAL" "$BASE" "$REMOTE" --output "$MERGED"
+[mergetool]
+  keepBackup = false
+[difftool]
+	prompt = false
+  cmd = meld
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true

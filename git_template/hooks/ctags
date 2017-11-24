@@ -2,6 +2,6 @@
 set -e
 PATH="/usr/local/bin:$PATH"
 trap "rm -f .git/tags.$$" EXIT
-nice ctags --fields=+l --tag-relative -Rf.git/tags.$$ --exclude=.git
+nice ctags --fields=+l --tag-relative -Rf.git/tags.$$ --exclude=.git --exclude=node_modules
 mv .git/tags.$$ .git/tags
 
