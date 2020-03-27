@@ -7,7 +7,7 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="bash_profile bashrc profile inputrc gitconfig git_template xinitrc bash_aliases git-flow-completion.bash git-completion.bash"
+files="bash_profile bashrc profile inputrc gitconfig git_template xinitrc zshrc bash_aliases git-flow-completion.bash git-completion.bash"
 
 ##########
 

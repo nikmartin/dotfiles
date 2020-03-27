@@ -38,6 +38,9 @@ export CXXFLAGS="$CFLAGS"
 export APPEND_TO_VERSION=-`date +%Y%m%d%H%M`
 export USE_CCACHE=1
 
+# SCONS build flags
+export SCONSFLAGS="-j7"
+
 # cleanup wine fixme messages
 export WINEDEBUG=fixme-all
 # The next line updates PATH for the Google Cloud SDK.
@@ -98,3 +101,4 @@ if [ -f /home/nmartin/.tnsrc ]; then
     source /home/nmartin/.tnsrc 
 fi
 ###-tns-completion-end-###
+

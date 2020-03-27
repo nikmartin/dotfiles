@@ -4,12 +4,12 @@
 [color]
 	ui = auto
 [init]
-	templatedir = ~/.git_template
+	
 [push]
 	default = simple
 [core]
 	autocrlf = input
-	editor = nano
+	editor = code --wait
 [guitool "Rebase onto..."]
 	cmd = git rebase
 	revprompt = yes
@@ -33,7 +33,5 @@
 [difftool]
 	prompt = false
   cmd = meld
-[filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
-	required = true
+[credential]
+	helper = cache --timeout=3600
