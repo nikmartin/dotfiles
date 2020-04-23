@@ -22,16 +22,15 @@
 [guitool "Pull with Rebase"]
 	 cmd = git pull --rebase
 [gui]
+
 [diff]
-	tool = meld
+	tool = vscode
 [merge]
-	tool = meld
-[mergetool "meld"]
- cmd = meld "$LOCAL" "$BASE" "$REMOTE" --output "$MERGED"
-[mergetool]
-  keepBackup = false
-[difftool]
-	prompt = false
-  cmd = meld
+	tool = vscode
+[mergetool "vscode"]
+	cmd = code --wait $MERGED
+	keepBackup = false
+[difftool "vscode"]
+	cmd = code --wait --diff $LOCAL $REMOTE	
 [credential]
-	helper = cache --timeout=3600
+	helper = cache --timeout=7200
