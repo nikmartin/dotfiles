@@ -53,11 +53,11 @@ precmd() { vcs_info }
 
 
 # Format the vcs_info_msg_0_ variable
-zstyle ':vcs_info:git:*' formats 'on branch %b'
+zstyle ':vcs_info:git:*' formats '/(%b)'
  
 # Set up the prompt (with git branch name)
 setopt PROMPT_SUBST
-PROMPT='%n in ${PWD/#$HOME/~} ${vcs_info_msg_0_} > '
+PROMPT='%n@${PWD/#$HOME/~}${vcs_info_msg_0_}>'
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/nmartin/google-cloud-sdk/path.zsh.inc' ]; then 
@@ -67,4 +67,9 @@ fi
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/nmartin/google-cloud-sdk/completion.zsh.inc' ]; then 
   source '/home/nmartin/google-cloud-sdk/completion.zsh.inc'; 
+fi
+
+# include a localprofile file that sources some private variables
+if [ -f '/home/nmartin/dotfiles/localprofile' ]; then 
+  source '/home/nmartin/dotfiles/localprofile'; 
 fi
